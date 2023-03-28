@@ -1,0 +1,33 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+    {
+      "name": "(gdb) push_swap",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/push_swap",
+      "args": ["61", "74", "12", "63", "64", "59", "58", "83", "3", "80", "70", "18", "50", "40", "13", "19", "4", "55", "56", "51", "30", "21", "93", "2", "81", "17", "66", "57", "6", "76", "89", "28", "11", "14", "62", "27", "54", "10", "65", "41", "20", "32", "35", "88", "78", "86", "36", "67", "94", "68", "7", "47", "52", "37", "85", "9", "84", "22", "92", "60", "77", "33", "15", "5", "100", "25", "73", "29", "97", "16", "69", "44", "39", "45", "34", "79", "75", "96", "26", "48", "38", "98", "23", "72", "42", "8", "95", "43", "53", "46", "87", "90", "91", "82", "1", "99", "71", "24", "49", "31" ],
+      "stopAtEntry": true,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "logging": {
+        "trace": true,
+        "engineLogging": true,
+        "traceResponse": true
+      },
+     
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing -gdb-set detach-on-fork off",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

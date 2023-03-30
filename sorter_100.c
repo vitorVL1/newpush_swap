@@ -6,7 +6,7 @@
 /*   By: vlima <vlima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:35:06 by vlima             #+#    #+#             */
-/*   Updated: 2023/03/30 15:44:20 by vlima            ###   ########.fr       */
+/*   Updated: 2023/03/30 17:28:24 by vlima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,5 @@ void	sorter_100(t_node **stack_a, t_node **stack_b, int tam)
 		push_a(stack_a, stack_b);
 	}
 	while (analise(stack_a) == 0)
-		ra(stack_a);
+		rra(stack_a);
 }

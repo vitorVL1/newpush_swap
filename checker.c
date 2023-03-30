@@ -6,7 +6,7 @@
 /*   By: vlima <vlima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:44:15 by vlima             #+#    #+#             */
-/*   Updated: 2023/03/23 14:24:53 by vlima            ###   ########.fr       */
+/*   Updated: 2023/03/30 18:05:52 by vlima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	checker_limits(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		if (ft_atol(av[i]) == 99999999999)
+		if (ft_atol(av[i]) >= INT_MAX || ft_atol(av[i]) <= INT_MIN)
 			return (0);
 		i++;
 	}

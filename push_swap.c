@@ -6,7 +6,7 @@
 /*   By: vlima <vlima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:02:07 by vlima             #+#    #+#             */
-/*   Updated: 2023/03/28 23:12:35 by vlima            ###   ########.fr       */
+/*   Updated: 2023/03/30 15:45:00 by vlima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int	main(int argc, char **argv)
 		short_sorter(&stack_a);
 	else if (argc == 5 || argc == 6)
 		sorter5(&stack_a, &stack_b, argc);
-	else if (argc > 6 && analise(&stack_a) == 0)
-		sorter_100(&stack_a, &stack_b);
-	printstack(&stack_a, &stack_b);
-	//ft_lstclear(&stack_a);
-	//ft_lstclear(&stack_b);
-	//big_sorter(stack_a, stack_b);
+	else if (argc > 6 && argc < 201 && analise(&stack_a) == 0)
+		sorter_100(&stack_a, &stack_b, 50);
+	else if (argc > 200 && analise(&stack_a) == 0)
+		sorter_500(&stack_a, &stack_b, 75);
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
 }

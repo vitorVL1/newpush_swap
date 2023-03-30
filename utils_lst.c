@@ -6,7 +6,7 @@
 /*   By: vlima <vlima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:05:02 by vlima             #+#    #+#             */
-/*   Updated: 2023/03/28 16:56:11 by vlima            ###   ########.fr       */
+/*   Updated: 2023/03/30 15:43:59 by vlima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,30 +80,4 @@ void	ft_lstclear(t_node **lst)
 		*lst = temp;
 	}
 	*lst = NULL;
-}
-
-void	printstack(t_node **stack1, t_node **stack2)
-{
-	t_node	*current;
-	t_node	*current2;
-
-	if (stack1 == NULL || stack2 == NULL)
-	{
-		printf("Error: One or both stacks are NULL.\n");
-		return ;
-	}
-	current = *stack1;
-	current2 = *stack2;
-	printf("--------------\n");
-	while (current != NULL)
-	{
-		printf("%d\n", current->content);
-		current = current->next;
-	}
-	while (current2 != NULL)
-	{
-		printf("\t%d\n", current2->content);
-		current2 = current2->next;
-	}
-	printf("--------------\n");
 }

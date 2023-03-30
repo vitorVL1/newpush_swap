@@ -6,13 +6,13 @@
 /*   By: vlima <vlima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:35:06 by vlima             #+#    #+#             */
-/*   Updated: 2023/03/28 23:20:25 by vlima            ###   ########.fr       */
+/*   Updated: 2023/03/30 15:44:20 by vlima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	make_chunck(t_node **stack_a, t_node **stack_b, int tam)
+void	make_chunck100(t_node **stack_a, t_node **stack_b, int tam)
 {
 	int		*chunk;
 	t_node	**current;
@@ -28,24 +28,23 @@ void	make_chunck(t_node **stack_a, t_node **stack_b, int tam)
 		error(stack_a, stack_b);
 	}
 	list2array(stack_a, chunk);
-	i = 0;
-	size = ft_lstsize((*stack_a));
-	while (i < size)
+	while (i <= tam)
 	{
-		if ((*stack_a)->content >= chunk[tam])
+		if ((*stack_a)->content >= chunk[tam - 1])
+		{
 			pb(stack_a, stack_b);
+			i++;
+		}
 		else
 			ra(stack_a);
-		i++;
 	}
-	//printstack(stack_a, stack_b);
+	free(chunk);
 }
 
 int	top_stackb(int rrb_big, int rb_big, int rrb_smal, int rb_smal)
 {
 	int	rotation;
 
-	//printf("rrb:%d rb:%d rrs%d rs%d\n", rrb_big, rb_big, rrb_smal, rb_smal);
 	if (rb_big == 0)
 		rb_big = INT_MAX;
 	if (rb_smal == 0)
@@ -97,27 +96,25 @@ void	push_a(t_node **stack_a, t_node **stack_b)
 		ra(stack_a);
 }
 
-void	sorter_100(t_node **stack_a, t_node **stack_b)
+void	sorter_100(t_node **stack_a, t_node **stack_b, int tam)
 {
 	int	i;
 	int	pos_big;
 
 	i = 0;
-	make_chunck(stack_a, stack_b, 51);
-	while (i++ <= 50)
+	make_chunck100(stack_a, stack_b, tam);
+	while ((*stack_b) != NULL)
 	{
 		best_path(stack_a, stack_b);
 		push_a(stack_a, stack_b);
 	}
-	i = 0;
 	pos_big = find_big(stack_a);
 	while (i++ <= pos_big)
 		ra(stack_a);
 	i = 0;
-	while (i++ < 49)
+	while (i++ < tam - 1)
 		pb(stack_a, stack_b);
-	i = 0;
-	while (i++ <= 50)
+	while ((*stack_b) != NULL)
 	{
 		best_path(stack_a, stack_b);
 		push_a(stack_a, stack_b);

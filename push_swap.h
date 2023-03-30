@@ -6,7 +6,7 @@
 /*   By: vlima <vlima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:06:06 by vlima             #+#    #+#             */
-/*   Updated: 2023/03/28 23:07:59 by vlima            ###   ########.fr       */
+/*   Updated: 2023/03/30 11:39:27 by vlima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void				push_lower(t_node **stack1, t_node **stack2);
 void				short_sorter(t_node **stack);
 void				sorter5(t_node **stack1, t_node **stack2, int num);
 int					find_lowest(t_node *stack);
-void				sorter_100(t_node **stack_a, t_node **stack_b);
+void				sorter_100(t_node **stack_a, t_node **stack_b, int tam);
+void				sorter_500(t_node **stack_a, t_node **stack_b, int tam);
 
 //lst
 void				ft_lstadd_back(t_node **lst, t_node *new);
@@ -69,6 +70,12 @@ void				list2array(t_node **stack1, int *array);
 //sorter utils
 int					find_big(t_node **stack);
 int					find_low(t_node **stack);
+void				make_chunck100(t_node **stack_a, t_node **stack_b, int tam);
+void				best_path(t_node **stack_a, t_node **stack_b);
+int					top_stackb(int rrb_big, int rb_big, int rrb_smal,
+						int rb_smal);
+void				push_a(t_node **stack_a, t_node **stack_b);
+void				stacka_organizer(t_node **stack_a, int *chunk, int tam);
 //idk
 int					checker(int argc, char **argv);
 int					analise(t_node **stack);

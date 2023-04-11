@@ -6,7 +6,7 @@
 /*   By: vlima <vlima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 23:41:05 by vlima             #+#    #+#             */
-/*   Updated: 2023/03/30 18:06:29 by vlima            ###   ########.fr       */
+/*   Updated: 2023/04/03 13:28:52 by vlima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	find_low(t_node **stack)
 
 void	stacka_organizer(t_node **stack_a, int *chunk, int index)
 {
-	if (index == 0)
+	if (index == 0 || index >= 450)
 		return ;
 	while ((*stack_a)->content != chunk[index - 1])
 		ra(stack_a);
@@ -88,7 +88,7 @@ void	make_chunck500(t_node **stack_a, t_node **stack_b, int tam, int index)
 	while (i <= tam - 1)
 	{
 		if ((*stack_a)->content >= chunk[0 + index]
-			&& (*stack_a)->content <= chunk[tam - 1 + index] && ++i)
+			&& (*stack_a)->content <= chunk[tam + index - 1] && ++i)
 			pb(stack_a, stack_b);
 		else
 			ra(stack_a);
@@ -105,7 +105,7 @@ void	sorter_500(t_node **stack_a, t_node **stack_b, int tam)
 
 	index = 0;
 	i = 0;
-	while (i <= 5)
+	while (i++ <= 5)
 	{
 		make_chunck500(stack_a, stack_b, tam, index);
 		while ((*stack_b) != NULL)
@@ -114,9 +114,8 @@ void	sorter_500(t_node **stack_a, t_node **stack_b, int tam)
 			push_a(stack_a, stack_b);
 		}
 		index = tam + index;
-		i++;
 	}
-	make_chunck500(stack_a, stack_b, 50, 450);
+	make_chunck500(stack_a, stack_b, ft_lstsize((*stack_a)) - 450, 450);
 	while ((*stack_b) != NULL)
 	{
 		best_path(stack_a, stack_b);

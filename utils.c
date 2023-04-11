@@ -6,7 +6,7 @@
 /*   By: vlima <vlima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:08:04 by vlima             #+#    #+#             */
-/*   Updated: 2023/03/30 15:44:45 by vlima            ###   ########.fr       */
+/*   Updated: 2023/04/03 14:00:27 by vlima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,36 @@ void	list2array(t_node **stack1, int *array)
 	i = 0;
 }
 
-void	printstack(t_node **stack1, t_node **stack2)
+void	best_path(t_node **stack_a, t_node **stack_b)
+{
+	int	pos_big;
+	int	pos_smal;
+	int	count_b;
+	int	count_s;
+	int	move;
+
+	count_b = 0;
+	count_s = 0;
+	pos_big = find_big(stack_b);
+	pos_smal = find_low(stack_b);
+	if (pos_big > ((ft_lstsize(*stack_b)) / 2))
+	{
+		while (pos_big++ < (ft_lstsize(*stack_b)))
+			count_b++;
+	}
+	if (pos_smal > ((ft_lstsize(*stack_b)) / 2))
+	{
+		while (pos_smal++ < (ft_lstsize(*stack_b)))
+			count_s++;
+	}
+	move = top_stackb(find_big(stack_b), count_b, find_low(stack_b), count_s);
+	while (move++ <= -1)
+		rrb(stack_b);
+	while (move-- > 1)
+		rb(stack_b);
+}
+
+/* void	printstack(t_node **stack1, t_node **stack2)
 {
 	t_node	*current;
 	t_node	*current2;
@@ -114,4 +143,4 @@ void	printstack(t_node **stack1, t_node **stack2)
 		current2 = current2->next;
 	}
 	printf("--------------\n");
-}
+} */

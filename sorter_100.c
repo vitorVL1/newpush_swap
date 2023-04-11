@@ -6,11 +6,31 @@
 /*   By: vlima <vlima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:35:06 by vlima             #+#    #+#             */
-/*   Updated: 2023/03/30 17:28:24 by vlima            ###   ########.fr       */
+/*   Updated: 2023/04/03 13:32:15 by vlima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	push_b(t_node **stack_a, t_node **stack_b, int *chunk, int tam)
+{
+	int	i;
+
+	i = 0;
+	if (ft_lstsize((*stack_a)) % 2 != 0)
+		tam++;
+	while (i <= ft_lstsize((*stack_a)))
+	{
+		if ((*stack_a)->content >= chunk[tam - 1])
+		{
+			pb(stack_a, stack_b);
+			i++;
+		}
+		else
+			ra(stack_a);
+	}
+	return ;
+}
 
 void	make_chunck100(t_node **stack_a, t_node **stack_b, int tam)
 {
@@ -28,16 +48,7 @@ void	make_chunck100(t_node **stack_a, t_node **stack_b, int tam)
 		error(stack_a, stack_b);
 	}
 	list2array(stack_a, chunk);
-	while (i <= tam)
-	{
-		if ((*stack_a)->content >= chunk[tam - 1])
-		{
-			pb(stack_a, stack_b);
-			i++;
-		}
-		else
-			ra(stack_a);
-	}
+	push_b(stack_a, stack_b, chunk, tam);
 	free(chunk);
 }
 
@@ -58,35 +69,6 @@ int	top_stackb(int rrb_big, int rb_big, int rrb_smal, int rb_smal)
 	else
 		rotation = rb_smal * -1;
 	return (rotation);
-}
-
-void	best_path(t_node **stack_a, t_node **stack_b)
-{
-	int	pos_big;
-	int	pos_smal;
-	int	count_b;
-	int	count_s;
-	int	move;
-
-	count_b = 0;
-	count_s = 0;
-	pos_big = find_big(stack_b);
-	pos_smal = find_low(stack_b);
-	if (pos_big > ((ft_lstsize(*stack_b)) / 2))
-	{
-		while (pos_big++ < (ft_lstsize(*stack_b)))
-			count_b++;
-	}
-	if (pos_smal > ((ft_lstsize(*stack_b)) / 2))
-	{
-		while (pos_smal++ < (ft_lstsize(*stack_b)))
-			count_s++;
-	}
-	move = top_stackb(find_big(stack_b), count_b, find_low(stack_b), count_s);
-	while (move++ <= -1)
-		rrb(stack_b);
-	while (move-- > 1)
-		rb(stack_b);
 }
 
 void	push_a(t_node **stack_a, t_node **stack_b)
@@ -112,7 +94,7 @@ void	sorter_100(t_node **stack_a, t_node **stack_b, int tam)
 	while (i++ <= pos_big)
 		ra(stack_a);
 	i = 0;
-	while (i++ < tam - 1)
+	while (i++ < tam + 1)
 		pb(stack_a, stack_b);
 	while ((*stack_b) != NULL)
 	{
